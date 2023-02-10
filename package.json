@@ -1,0 +1,23 @@
+{
+  "name": "sass-fluid-container-resizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.58.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreapaiola/sass-fluid-container-resizer.git"
+  },
+  "author": "Andrea Paiola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreapaiola/sass-fluid-container-resizer/issues"
+  },
+  "homepage": "https://github.com/andreapaiola/sass-fluid-container-resizer#readme"
+}

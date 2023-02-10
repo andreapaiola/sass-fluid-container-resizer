@@ -1,0 +1,30 @@
+$baseRem: 10px;
+
+html{
+  font-size: $baseRem;
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+@function toCqw($value) {
+  $cqwValue: (strip-unit($value)) + cqw;
+  @return $cqwValue;
+}
+@function toRem($value) {
+  $remValue: (strip-unit($value) / strip-unit($baseRem)) + rem;
+  @return $remValue;
+}
+
+@function FCCCalc($minValue, $maxValue, $minWidth, $maxWidth) {
+  $factor: ($maxValue - $minValue) / ($maxWidth - $minWidth);
+  $factorScaled: toCqw($factor * 100);
+  $b: toRem($minValue - ($factor * $minWidth));
+  $fluid: '' + $factorScaled + ' + ' + $b + '';
+  @return clamp(toRem($minValue),#{$fluid},toRem($maxValue));
+}
+
+/* example of use */
+.box{
+  font-size: FCCCalc(16,24,400,800);
+}
