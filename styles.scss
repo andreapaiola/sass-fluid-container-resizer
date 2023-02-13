@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:meta";
+
 $baseRem: 10px;
 
 html{
@@ -5,26 +8,29 @@ html{
 }
 
 @function strip-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @if meta.type-of($value) == "number" and not math.is-unitless($value) {
+    @return math.div($value, $value * 0 + 1);
+  }
+  @return $value;
 }
 @function toCqw($value) {
   $cqwValue: (strip-unit($value)) + cqw;
   @return $cqwValue;
 }
 @function toRem($value) {
-  $remValue: (strip-unit($value) / strip-unit($baseRem)) + rem;
+  $remValue: math.div(strip-unit($value), strip-unit($baseRem)) + rem;
+  @debug $remValue;
   @return $remValue;
 }
 
 @function FCCCalc($minValue, $maxValue, $minWidth, $maxWidth) {
-  $factor: ($maxValue - $minValue) / ($maxWidth - $minWidth);
+  $factor: math.div($maxValue - $minValue, $maxWidth - $minWidth);
   $factorScaled: toCqw($factor * 100);
   $b: toRem($minValue - ($factor * $minWidth));
   $fluid: '' + $factorScaled + ' + ' + $b + '';
-  @return clamp(toRem($minValue),#{$fluid},toRem($maxValue));
+  @return clamp(#{toRem($minValue)},#{$fluid},#{toRem($maxValue)});
 }
 
-/* example of use */
 .box{
   font-size: FCCCalc(16,24,400,800);
 }

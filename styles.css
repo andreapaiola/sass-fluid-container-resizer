@@ -2,9 +2,8 @@ html {
   font-size: 10px;
 }
 
-/* example of use */
 .box {
-  font-size: clamp(1.6rem, 2cqw + 0.8rem, 2.4rem);
+  font-size: clamp(1.6rem,2cqw + 0.8rem,2.4rem);
 }
 
 /*# sourceMappingURL=styles.css.map */
