@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Title</title>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="styles.css">
     <style type="text/css">
+        html {
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
         .container{
             width: 90%;
             min-width: 100px;
-            margin: 1em auto;
+            margin: 0 auto;
             background-color: aliceblue;
             padding: 1em;
             overflow: hidden;
@@ -25,63 +34,43 @@
             max-width: 800px;
         }
          .container-large{
-            max-width: 1600px;
+            max-width: 1200px;
         }
-         .box{
-             padding: 1em;
-         }
+        .box{
+            padding: 1em;
+            display: flex;
+            align-items: flex-start;
+            overflow-wrap: break-word;
+            gap: 1em;
+        }
+        .image{
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }       
     </style>
 </head>
 <body>
-<div class="container container-small">
-    <div class="box">
-        <h1>Title 1 title 1 Title 1 title 1 Title 1 title 1 Title 1 title 1 Title 1 title 1 </h1>
-        <h2>Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 </h2>
-        <h2>Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 </h2>
-        <p>
-            Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-        </p>
-        <p>
-            Paragraph2 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph2 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph2 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-        </p>
-    </div>
-</div>
-<div class="container container-medium">
-    <div class="box">
-        <h1>Title 1 title 1 Title 1 title 1 Title 1 title 1 Title 1 title 1 Title 1 title 1 </h1>
-        <h2>Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 </h2>
-        <h2>Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 </h2>
-        <p>
-            Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-        </p>
-        <p>
-            Paragraph2 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph2 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph2 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-        </p>
-    </div>
-</div>
+
+
 <div class="container container-large">
     <div class="box">
-        <h1>Title 1 title 1 Title 1 title 1 Title 1 title 1 Title 1 title 1 Title 1 title 1 </h1>
-        <h2>Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 </h2>
-        <h2>Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 </h2>
-        <p>
-            Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-        </p>
-        <p>
-            Paragraph2 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph2 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-            Paragraph2 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
-        </p>
+        <picture class="image">
+            <source media="(max-width: 47.9375em)" srcset="https://picsum.photos/id/1015/312/231/">
+            <source media="(min-width: 48em) and (max-width: 85.3125em)" srcset="https://picsum.photos/id/1015/502/373/">
+            <source media="(min-width: 85.375em)" srcset="https://picsum.photos/id/1015/502/373/">
+            <img loading="lazy" class="image" src="https://picsum.photos/id/1015/312/231/" alt="Test">
+        </picture>
+        <div class="text">
+            <h1>Title 1 title 1 Title 1 title 1 Title 1 title 1 Title 1 title 1 Title 1 title 1 </h1>
+            <h2>Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 Title 2 title 2 </h2>
+            <h2>Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 Title 3 title 3 </h2>
+            <p>
+                Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
+                Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
+                Paragraph1 lorem ipsum dolor sit amet paragraph lorem ipsum dolor sit amet
+            </p>
+        </div>
     </div>
 </div>
 

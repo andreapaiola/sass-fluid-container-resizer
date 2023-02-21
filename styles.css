@@ -2,8 +2,22 @@ html {
   font-size: 16px;
 }
 
-.box {
-  font-size: clamp(1rem,2cqw + 0.5rem,1.5rem);
+@media screen and (max-width: 48em) {
+  .box {
+    font-size: 4.2666666667vw;
+    color: blue;
+    flex-wrap: wrap;
+  }
 }
-
-/*# sourceMappingURL=styles.css.map */
+@media screen and (min-width: 48.0625em) {
+  .box {
+    font-size: clamp(1rem,1.8561484919cqw + 0.1078886311rem,1.5rem);
+    color: red;
+  }
+  .image {
+    width: clamp(12.5rem,9.2807424594cqw + 8.0394431555rem,15rem);
+  }
+  .text {
+    width: calc(100% - clamp(9.375rem,11.6009280742cqw + 3.7993039443rem,12.5rem));
+  }
+}/*# sourceMappingURL=styles.css.map */

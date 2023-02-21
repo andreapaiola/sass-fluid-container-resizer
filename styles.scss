@@ -1,6 +1,8 @@
 @use "sass:math";
 @use "sass:meta";
 
+$mobWidth: 375px;
+$baseEm: 16px;
 $baseRem: 16px;
 
 html{
@@ -17,11 +19,20 @@ html{
   $cqwValue: (strip-unit($value)) + cqw;
   @return $cqwValue;
 }
-@function toRem($value) {
-  $remValue: math.div(strip-unit($value), strip-unit($baseRem)) + rem;
-  //@debug $remValue;
+@function toEm($value) {
+  $remValue: math.div(strip-unit($value), strip-unit($baseEm)) + em;
   @return $remValue;
 }
+@function toRem($value) {
+  $remValue: math.div(strip-unit($value), strip-unit($baseRem)) + rem;
+  @return $remValue;
+}
+@function toVw($value) {
+  $remValue: math.div(strip-unit($value), strip-unit($mobWidth)) * 100vw;
+  @return $remValue;
+}
+
+
 
 @function FCCCalc($minValue, $maxValue, $minWidth, $maxWidth) {
   $factor: math.div($maxValue - $minValue, $maxWidth - $minWidth);
@@ -31,6 +42,29 @@ html{
   @return clamp(#{toRem($minValue)},#{$fluid},#{toRem($maxValue)});
 }
 
-.box{
-  font-size: FCCCalc(16,24,400,800);
+@media screen and (max-width: toEm(768px)) {
+  .box{
+    font-size: toVw(16px);
+    color: blue;
+    flex-wrap: wrap; 
+  }
 }
+
+@media screen and (min-width: toEm(769px)) {
+  .box{
+    font-size: FCCCalc(16,24,769,1200);
+    color: red;
+  }
+  .image{
+    width: FCCCalc(200,240,769,1200);
+  
+  }
+  .text{
+    width: calc(100% - FCCCalc(150,200,769,1200));
+  }
+}
+
+
+
+
+
