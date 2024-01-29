@@ -31,6 +31,10 @@ html{
   $remValue: math.div(strip-unit($value), strip-unit($mobWidth)) * 100vw;
   @return $remValue;
 }
+@function toDvw($value) {
+  $remValue: math.div(strip-unit($value), strip-unit($mobWidth)) * 100dvw;
+  @return $remValue;
+}
 
 
 
@@ -44,7 +48,7 @@ html{
 
 @media screen and (max-width: toEm(768px)) {
   .box{
-    font-size: toVw(16px);
+    font-size: toDvw(16px);
     color: blue;
     flex-wrap: wrap; 
   }
@@ -57,7 +61,6 @@ html{
   }
   .image{
     width: FCCCalc(200,240,769,1200);
-  
   }
   .text{
     width: calc(100% - FCCCalc(150,200,769,1200));
